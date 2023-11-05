@@ -25,13 +25,13 @@ class dovecot_impersonate extends rcube_plugin {
         $rcmail = rcmail::class::get_instance();
         $this->load_config();
     
-        $seperator = $rcmail->config->get('dovecot_impersonate_seperator', '*');
+        $separator = $rcmail->config->get('dovecot_impersonate_separator', '*');
     
-        if (strpos($data['user'], $seperator)) {
-            $arr = explode($seperator, $data['user']);
+        if (strpos($data['user'], $separator)) {
+            $arr = explode($separator, $data['user']);
             if (count($arr) == 2) {
                 $data['user'] = $arr[0];
-                $_SESSION['plugin.dovecot_impersonate_master'] = $seperator . $arr[1];
+                $_SESSION['plugin.dovecot_impersonate_master'] = $separator . $arr[1];
             }
         }
         return $data;
